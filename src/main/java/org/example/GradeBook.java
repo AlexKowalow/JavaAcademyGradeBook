@@ -44,12 +44,14 @@ public class GradeBook {
     }
 
     public double findAverageGrade() {
-        double sum = 0.0;
+//        double sum = 0.0;
+//
+//        for (var s : subjects) {
+//            sum += s.findAverage();
+//        }
+//
+//        return sum / subjects.size();
 
-        for (var s : subjects) {
-            sum += s.findAverage();
-        }
-
-        return sum / subjects.size();
+        return subjects.stream().map(Subject::getGrades).flatMapToDouble(grades -> grades.stream().mapToDouble(Integer::doubleValue)).average().orElse(0.0);
     }
 }

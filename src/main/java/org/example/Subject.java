@@ -31,10 +31,6 @@ public class Subject {
     }
 
     public double findAverage() {
-        double sum = 0.0;
-        for (var g : grades) {
-            sum += g;
-        }
-        return sum / grades.size();
+        return grades.stream().mapToDouble(Integer::doubleValue).average().orElse(0.0);
     }
 }
